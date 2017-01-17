@@ -11,7 +11,7 @@ def get_temperature():
     t_list = read_temperature()    
     help.json_header_set(response)
     #return  json.dumps({"c":t_list[0],"f":t_list[1],"w": datetime.isoformat(datetime.now())})
-    return  json.dumps({"c":t_list[0],"w": datetime.isoformat(datetime.now())})
+    return  json.dumps({"c":t_list[0]})
 
 
 def read_temperature():
@@ -25,7 +25,7 @@ def read_temperature():
     equals_pos = lines[1].find('t=')
     if equals_pos != -1:
         temp_string = lines[1][equals_pos+2:]
-        temp_c = float(temp_string) / 1000.0
+        temp_c = float(temp_string) #/ 1000.0
         temp_f = 0 # temp_c * 9.0 / 5.0 + 32.0
     return temp_c,temp_f
 
